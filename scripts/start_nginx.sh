@@ -10,7 +10,8 @@ nginx -c /opt/semosshome/nginx/conf/nginx.conf
 sed -i "s/<replace_with_server_name>/${SERVER_NAME}/g" /opt/semosshome/nginx/templates/upstream.conf
 
 if [[ -z "${NGINX_ROUTE}" ]]; then
-sed -i "s@sticky;@sticky name=$NGINX_ROUTE;@g" /opt/semosshome/nginx/templates/upstream.conf
+echo "No specific route cookie"
+else sed -i "s@sticky;@sticky name=$NGINX_ROUTE;@g" /opt/semosshome/nginx/templates/upstream.conf
 fi
 
 
